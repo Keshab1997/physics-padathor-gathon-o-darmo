@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কুইজ সেট ৫ - পদার্থের গঠন এবং বৈশিষ্ট্</title>
+    
+    <!-- আপনার মূল CSS ফাইল -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- Tailwind CSS এর CDN লিঙ্ক (স্ক্রিপ্টের কিছু ক্লাস এর উপর নির্ভরশীল) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="day-mode">
+
+    <main class="quiz-page-container">
+        <!-- কুইজের হেডার ও স্কোরবোর্ড -->
+        <header class="quiz-header">
+            <h1 id="quiz-title">লোড হচ্ছে...</h1>
+            <div class="score-board">
+                <span id="correct-count">✔️ 0</span>
+                <span id="wrong-count">❌ 0</span>
+                <span id="timer">00:00</span>
+            </div>
+        </header>
+
+        <!-- এই কন্টেইনারে প্রশ্নগুলো লোড হবে -->
+        <div id="quiz-container">
+            <p class="text-center font-semibold">প্রশ্ন লোড হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন...</p>
+        </div>
+        
+        <!-- নেভিগেশন বাটন -->
+        <div class="page-navigation">
+            <a href="Qset4.html" class="btn btn-secondary">পূর্ববর্তী</a>
+            <a href="../index.html" class="btn btn-primary">হোম</a>
+            <a href="Qset6.html" class="btn btn-secondary">পরবর্তী</a>
+        </div>
+        
+        <a href="../index.html" class="back-to-home">হোমপেজে ফিরে যান</a>
+    </main>
+
+    <!-- এই কুইজ সেটের জন্য নির্দিষ্ট প্রশ্নাবলী -->
+    <script>
+        const quizSet = {
+            name: "পদার্থের গঠন এবং বৈশিষ্ট্ কুইজ সেট - ৫",
+            questions: [
+                {
+                    question: "দুটি তরলের ঘনত্ব যথাক্রমে 1.6 g/cm³ ও 2 g/cm³। যদি সম-আয়তনে মেশানো হয়, তবে মিশ্রণের ঘনত্ব হবে—",
+                    options: ["1.65 g/cm³", "1.7 g/cm³", "1.8 g/cm³", "1.9 g/cm³"],
+                    answer: 2, // C
+                    explanation: "সম-আয়তনে মেশালে গড় ঘনত্ব হয় দুটি ঘনত্বের পাটিগণিতীয় গড়। সুতরাং, ঘনত্ব = (1.6 + 2)/2 = 1.8 g/cm³।"
+                },
+                {
+                    question: "দুটি তরলের ঘনত্ব যথাক্রমে d₁ ও d₂। সম ভরে মেশালে মিশ্রণের ঘনত্ব হবে—",
+                    options: ["(d₁ + d₂)/2", "d₁d₂ / (d₁ + d₂)", "√(d₁d₂)", "2d₁d₂ / (d₁ + d₂)"],
+                    answer: 3, // D
+                    explanation: "সম ভরে মেশালে মিশ্রণের ঘনত্ব হয় দুটি ঘনত্বের বিপরীত মধ্যক (Harmonic Mean), যার সূত্র হলো 2d₁d₂ / (d₁ + d₂)।"
+                },
+                {
+                    question: "উত্তাল সমুদ্রে তেল ঢাললে সমুদ্র শান্ত হয়, কারণ—",
+                    options: ["সান্দ্রতা", "পৃষ্ঠটান", "প্লবতা", "কোনোটিই নয়"],
+                    answer: 1, // B
+                    explanation: "তেল জলের পৃষ্ঠটান কমিয়ে দেয়, ফলে ছোট ছোট ঢেউ ও তরঙ্গ মিলিয়ে যায় এবং সমুদ্রকে শান্ত দেখায়।"
+                },
+                {
+                    question: "1 torr = কত mm Hg?",
+                    options: ["0.5 mm Hg", "1 mm Hg", "2 mm Hg", "1 cm Hg"],
+                    answer: 1, // B
+                    explanation: "চাপের একক হিসেবে, 1 torr চাপকে সংজ্ঞানুযায়ী 1 মিলিমিটার পারদস্তম্ভের (Hg) চাপের সমান ধরা হয়।"
+                },
+                {
+                    question: "1 torr = কত N/m²?",
+                    options: ["266.56", "66.54", "399.84", "133.28"],
+                    answer: 3, // D
+                    explanation: "প্রমাণ বায়ুমণ্ডলীয় চাপ (760 torr) প্রায় 101325 N/m²। সুতরাং, 1 torr ≈ 101325 / 760 ≈ 133.32 N/m²।"
+                },
+                {
+                    question: "একটি বন্ধ পাত্রে একটি কাঠের টুকরো জলে ভাসছে। পাত্র থেকে কিছুটা বাতাস বের করলে—",
+                    options: ["কাঠ আরও ডুবে যাবে", "কাঠ আরও ভেসে উঠবে", "নিমজ্জিত অংশ অপরিবর্তিত থাকবে", "প্রথমে ভাসবে, পরে পুরো ডুবে যাবে"],
+                    answer: 0, // A
+                    explanation: "বাতাস বের করলে বায়ুর চাপ কমে, ফলে বায়ুর প্লবতাও কমে যায়। এই প্লবতার ঘাটতি পূরণের জন্য বস্তুটি জলে আরও কিছুটা ডুবে যায়।"
+                },
+                {
+                    question: "যদি পাত্রে অতিরিক্ত বাতাস ঢুকানো হয়, তাহলে—",
+                    options: ["কাঠ আরও ডুবে যাবে", "কাঠ আরও ভেসে উঠবে", "নিমজ্জিত অংশ অপরিবর্তিত থাকবে", "প্রথমে ডুবে পরে ভেসে উঠবে"],
+                    answer: 1, // B
+                    explanation: "অতিরিক্ত বাতাস প্রবেশ করালে বায়ুর চাপ বাড়ে, যার ফলে বায়ুর প্লবতাও বৃদ্ধি পায়। তাই কাঠের টুকরোটি কিছুটা ভেসে উঠবে।"
+                },
+                {
+                    question: "1 N = কত dyne?",
+                    options: ["10³", "10⁴", "10⁵", "10⁶"],
+                    answer: 2, // C
+                    explanation: "বল পরিমাপের SI একক নিউটন (N) এবং CGS একক ডাইন (dyne)। এদের মধ্যে সম্পর্কটি হল 1 N = 10⁵ dyne।"
+                },
+                {
+                    question: "1 N/m = কত dyn/cm?",
+                    options: ["10", "100", "1000", "10,000"],
+                    answer: 2, // C
+                    explanation: "যেহেতু 1 N = 10⁵ dyne এবং 1 m = 100 cm, সুতরাং 1 N/m = (10⁵ dyne) / (100 cm) = 1000 dyn/cm।"
+                },
+                {
+                    question: "ইয়ং গুণাঙ্ক Y = অনুদৈর্ঘ্য পীড়ন / অনুদৈর্ঘ্য বিকৃতি – এটি কোন ধরনের পদার্থের জন্য প্রযোজ্য?",
+                    options: ["শুধুমাত্র কঠিন", "শুধুমাত্র তরল", "শুধুমাত্র গ্যাস", "কঠিন, তরল ও গ্যাস"],
+                    answer: 0, // A
+                    explanation: "ইয়ং গুণাঙ্ক বস্তুর দৈর্ঘ্য বরাবর স্থিতিস্থাপকতার পরিমাপ করে, যা কেবলমাত্র কঠিন পদার্থের একটি বৈশিষ্ট্য।"
+                }
+            ]
+        };
+    </script>
+    
+    <script src="../script.js"></script>
+   
+</body>
+</html>

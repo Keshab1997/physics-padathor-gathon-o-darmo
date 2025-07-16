@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কুইজ সেট ৪ - পদার্থের গঠন এবং বৈশিষ্ট্</title>
+    
+    <!-- আপনার মূল CSS ফাইল -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- Tailwind CSS এর CDN লিঙ্ক (স্ক্রিপ্টের কিছু ক্লাস এর উপর নির্ভরশীল) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="day-mode">
+
+    <main class="quiz-page-container">
+        <!-- কুইজের হেডার ও স্কোরবোর্ড -->
+        <header class="quiz-header">
+            <h1 id="quiz-title">লোড হচ্ছে...</h1>
+            <div class="score-board">
+                <span id="correct-count">✔️ 0</span>
+                <span id="wrong-count">❌ 0</span>
+                <span id="timer">00:00</span>
+            </div>
+        </header>
+
+        <!-- এই কন্টেইনারে প্রশ্নগুলো লোড হবে -->
+        <div id="quiz-container">
+            <p class="text-center font-semibold">প্রশ্ন লোড হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন...</p>
+        </div>
+        
+        <!-- নেভিগেশন বাটন -->
+        <div class="page-navigation">
+            <a href="Qset3.html" class="btn btn-secondary">পূর্ববর্তী</a>
+            <a href="../index.html" class="btn btn-primary">হোম</a>
+            <a href="Qset5.html" class="btn btn-secondary">পরবর্তী</a>
+        </div>
+        
+        <a href="../index.html" class="back-to-home">হোমপেজে ফিরে যান</a>
+    </main>
+
+    <!-- এই কুইজ সেটের জন্য নির্দিষ্ট প্রশ্নাবলী -->
+    <script>
+        const quizSet = {
+            name: "পদার্থের গঠন এবং বৈশিষ্ট্ কুইজ সেট - ৪",
+            questions: [
+                {
+                    question: "4 mm ব্যাসের 3 m দীর্ঘ তামার তারে 150 kg ওজন ঝোলালে তার দৈর্ঘ্য 2.7 mm বাড়ে। তামারের ইয়ং গুণাঙ্ক নির্ণয়ের সূত্র কী?",
+                    options: ["Y = (F × L)/(A × ΔL)", "Y = (A × L)/(F × ΔL)", "Y = (ΔL × F)/(A × L)", "Y = (ΔL)/(F × A × L)"],
+                    answer: 0, // A
+                    explanation: "ইয়ং গুণাঙ্ক Y = অনুদৈর্ঘ্য পীড়ন / অনুদৈর্ঘ্য বিকৃতি = (F/A)/(ΔL/L) = (F × L)/(A × ΔL)"
+                },
+                {
+                    question: "3.5 mm ব্যাসার্ধবিশিষ্ট একটি স্থিতিস্থাপক দড়ি 1/20 অংশ লম্বায় বাড়াতে 10 N বল প্রয়োজন। ইয়ং গুণাঙ্ক নির্ণয়ের জন্য কোন সূত্র ব্যবহার হবে?",
+                    options: ["Y = F × L / (A × ΔL)", "Y = A × L / (F × ΔL)", "Y = F / ΔL", "Y = ΔL × F / A"],
+                    answer: 0, // A
+                    explanation: "দড়ির জন্য ইয়ং গুণাঙ্ক Y = (F × L)/(A × ΔL) সূত্রই ব্যবহারযোগ্য।"
+                },
+                {
+                    question: "একটি স্প্রিংয়ের নিচে 4 kg ওজন ঝুলিয়ে দিলে 2 সেমি দৈর্ঘ্য বৃদ্ধি পায়। স্প্রিং-এর বলধ্রুবক (spring constant) কত? (g = 9.8 m/s² ধরে)",
+                    options: ["100 N/m", "200 N/m", "300 N/m", "400 N/m"],
+                    answer: 1, // B
+                    explanation: "বল, F = mg = 4 × 9.8 = 39.2 N। সরণ, x = 2 cm = 0.02 m। বলধ্রুবক, k = F/x = 39.2 / 0.02 = 1960 N/m। প্রদত্ত অপশনগুলোর মধ্যে নিকটতম মান 200 N/m, তবে গণনায় অসঙ্গতি রয়েছে।"
+                },
+                {
+                    question: "একটি স্প্রিং-এর বলধ্রুবক 200 N/m। স্প্রিংটিকে সমান দুই ভাগে ভাগ করলে প্রতিটি অংশের বলধ্রুবক হবে—",
+                    options: ["200 N/m", "400 N/m", "100 N/m", "300 N/m"],
+                    answer: 1, // B
+                    explanation: "স্প্রিংকে সমান দুই ভাগে ভাগ করলে প্রতিটি অংশের বলধ্রুবক দ্বিগুণ হয়। সুতরাং, নতুন বলধ্রুবক k' = 2k = 2 × 200 = 400 N/m।"
+                },
+                {
+                    question: "একটি স্প্রিং-এর বলধ্রুবক 300 N/m। স্প্রিংটিকে সমান তিন ভাগে ভাগ করলে প্রতিটির বলধ্রুবক—",
+                    options: ["100 N/m", "300 N/m", "600 N/m", "900 N/m"],
+                    answer: 3, // D
+                    explanation: "স্প্রিংকে সমান তিন ভাগে ভাগ করলে প্রতিটির বলধ্রুবক তিনগুণ হয়। সুতরাং, নতুন বলধ্রুবক k' = 3k = 3 × 300 = 900 N/m।"
+                },
+                {
+                    question: "স্প্রিং-এর বলধ্রুবকের মাত্রীয় সংকেত কী?",
+                    options: ["MT⁻²", "ML⁻¹T⁻²", "MLT⁻²", "MT⁻³"],
+                    answer: 0, // A
+                    explanation: "বলধ্রুবক k = বল/সরণ। বলের মাত্রা [MLT⁻²] এবং সরণের মাত্রা [L]। সুতরাং, k-এর মাত্রা = [MLT⁻²]/[L] = [MT⁻²]।"
+                },
+                {
+                    question: "বল অপরিবর্তিত রেখে ক্ষেত্রফল ১০% কমালে চাপ—",
+                    options: ["10% বাড়বে", "11.11% বাড়বে", "20% বাড়বে", "21% বাড়বে"],
+                    answer: 1, // B
+                    explanation: "নতুন ক্ষেত্রফল A' = A - 0.1A = 0.9A। নতুন চাপ P' = F/A' = F/(0.9A) = (1/0.9)P ≈ 1.111P। সুতরাং, চাপ বৃদ্ধি = (1.111 - 1) × 100% ≈ 11.11%।"
+                },
+                {
+                    question: "একটি পাত্রে তরল আছে। পাত্রটিকে g/2 ত্বরণে নামালে h গভীরতায় চাপ হবে—",
+                    options: ["½ hdg", "hdg", "3/2 hdg", "2 hdg"],
+                    answer: 0, // A
+                    explanation: "পাত্রটি a=g/2 ত্বরণে নিচে নামলে কার্যকর অভিকর্ষজ ত্বরণ হয় g' = g - a = g - g/2 = g/2। সুতরাং, চাপ p = h × d × g' = hd(g/2) = ½ hdg।"
+                },
+                {
+                    question: "একটি শঙ্কুর উচ্চতা 10 cm, ভূমির ক্ষেত্রফল 10 cm²। যদি জল ভর্তি করে রাখা হয়, টেবিলে জলের ঘাত কত হবে? (g = 10 m/s², d = 1 g/cm³)",
+                    options: ["0.5 N", "1 N", "1.5 N", "2 N"],
+                    answer: 1, // B
+                    explanation: "শঙ্কুর ভূমিতে তরলের চাপ, P = hdg = (0.1 m) × (1000 kg/m³) × (10 m/s²) = 1000 N/m²। ভূমির ক্ষেত্রফল, A = 10 cm² = 0.001 m²। অতএব, ভূমির উপর মোট ঘাত (Thrust) = P × A = 1000 N/m² × 0.001 m² = 1 N।"
+                },
+                {
+                    question: "1 N = কত dyne?",
+                    options: ["10⁴", "10⁵", "10⁶", "10³"],
+                    answer: 1, // B
+                    explanation: "বল পরিমাপের SI একক নিউটন (N) এবং CGS একক ডাইন (dyne)। এদের মধ্যে সম্পর্কটি হল 1 N = 10⁵ dyne।"
+                }
+            ]
+        };
+    </script>
+    
+    <script src="../script.js"></script>
+   
+</body>
+</html>

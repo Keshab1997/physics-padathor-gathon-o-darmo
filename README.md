@@ -1,1 +1,1 @@
-# physics-padathor-gathon-o-darmo
+# Physics-Magnet
