@@ -1,14 +1,14 @@
-/* style.css (Complete and Unified Version) */
+/* style.css (Complete, Reorganized, and Responsive Version) */
 
 /* --- 1. Font Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
 
 /* --- 2. Global & Body Styles --- */
 body {
-  font-family: 'Hind Siliguri', sans-serif;
-  transition: background 0.4s ease, color 0.4s ease;
-  margin: 0;
-  padding: 20px;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    margin: 0;
+    padding: 20px;
 }
 body.homepage {
     position: relative;
@@ -21,6 +21,7 @@ body.homepage::before, body.homepage::after {
     border-radius: 50%;
     filter: blur(100px);
     opacity: 0.4;
+    transition: background-color 0.5s ease;
 }
 body.homepage::before {
     width: 400px;
@@ -37,42 +38,72 @@ body.homepage::after {
     right: -200px;
 }
 main {
-  max-width: 900px;
-  margin: 20px auto;
-  transition: background 0.4s ease, border-color 0.4s ease;
-  padding: 20px 30px;
-  border-radius: 24px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid transparent;
+    max-width: 900px;
+    margin: 20px auto;
 }
 h1, h2, h3, p {
-  transition: color 0.4s ease;
+    transition: color 0.4s ease;
 }
 
-/* --- 3. Day & Dark Mode --- */
+/* --- 3. Day & Dark Mode Theming --- */
 body.day-mode { background: #f0f4f8; color: #334155; }
-body.day-mode main { background: #ffffff; border-color: #e2e8f0; }
-body.day-mode h1, body.day-mode h2, body.day-mode h3 { color: #1e293b; }
-body.day-mode .option-btn { background-color: #f8fafc; border-color: #e2e8f0; color: #334155; }
-body.day-mode .option-btn:hover:not(:disabled) { border-color: #3b82f6; }
-body.day-mode .main-header p { color: #64748b; }
-
 body.dark-mode { background: #111827; color: #d1d5db; }
-body.dark-mode main { background: #1f2937; border-color: #374151; }
+
+body.day-mode h1, body.day-mode h2, body.day-mode h3 { color: #1e293b; }
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #f9fafb; }
-body.dark-mode .option-btn { background-color: #374151; border-color: #4b5563; color: #f3f4f6; }
-body.dark-mode .option-btn:hover:not(:disabled) { border-color: #60a5fa; }
+
+body.day-mode .main-header p, body.day-mode footer { color: #64748b; }
+body.dark-mode .main-header p, body.dark-mode footer { color: #9ca3af; }
+
 body.dark-mode.homepage::before { background: #4f46e5; opacity: 0.3; }
 body.dark-mode.homepage::after { background: #be185d; opacity: 0.3; }
-body.dark-mode .main-header p { color: #9ca3af; }
 
+/* --- 4. Component Styles: Header, Card, Nav Grid, Footer --- */
 
-/* --- 4. Home Page Styles --- */
-.main-header { text-align: center; padding: 20px 0; margin-bottom: 20px; }
-.main-header h1 { font-size: 2.8rem; font-weight: 700; margin: 0; }
-.main-header p { font-size: 1.1rem; }
-.nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; max-width: 900px; margin: 20px auto; padding: 0 20px; }
-.nav-button { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px 15px; border-radius: 20px; text-decoration: none; color: white; text-align: center; box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+/* Header */
+.main-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.main-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+.main-header p {
+    font-size: 1.1rem;
+}
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+body.dark-mode .profile-pic {
+    border-color: #374151;
+}
+
+/* Nav Grid */
+.nav-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
+    max-width: 900px; 
+    margin: 20px auto; 
+}
+.nav-button { 
+    display: flex; flex-direction: column; align-items: center; justify-content: center; 
+    padding: 25px 15px; border-radius: 20px; text-decoration: none; color: white; text-align: center; 
+    box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
 .nav-button:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 30px -5px rgba(0,0,0,0.2); }
 .nav-button i { font-size: 2.5rem; margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
 .nav-button span { font-size: 1.1rem; font-weight: 600; }
@@ -80,293 +111,478 @@ body.dark-mode .main-header p { color: #9ca3af; }
 .color-quiz { background: linear-gradient(135deg, #16a34a, #4ade80); }
 .color-revision { background: linear-gradient(135deg, #f59e0b, #facc15); }
 .color-games { background: linear-gradient(135deg, #c026d3, #f472b6); }
-.card { padding: 25px; border-radius: 16px; margin-bottom: 30px; }
-.card h2 { font-size: 1.75rem; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center;}
+
+/* Card */
+.card { 
+    padding: 25px; 
+    border-radius: 16px; 
+    margin-bottom: 30px; 
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+body.dark-mode .card {
+    background: #1f2937;
+    border-color: #374151;
+}
+.card h2 { 
+    font-size: 1.75rem; 
+    margin-top: 0; 
+    border-bottom: 2px solid #e2e8f0; 
+    padding-bottom: 15px; 
+    margin-bottom: 20px; 
+    display: flex; 
+    align-items: center;
+}
 .icon-title { margin-right: 15px; color: #3b82f6; }
 body.dark-mode .card h2 { border-bottom-color: #374151; }
 body.dark-mode .icon-title { color: #60a5fa; }
-footer { text-align: center; padding: 1rem; color: #64748b; }
-body.dark-mode footer { color: #9ca3af; }
 
-/* --- 5. Link Container (Pill Style) --- */
+/* Link Container (Pill Style) */
 .link-container { display: flex; flex-wrap: wrap; gap: 15px; counter-reset: link-counter; }
-.link-container a { position: relative; flex-grow: 0; padding: 10px 20px 10px 50px; border-radius: 50px; display: inline-flex; align-items: center; font-weight: 600; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; transition: all 0.2s ease; }
+.link-container a { 
+    position: relative; flex-grow: 0; padding: 10px 20px 10px 50px; border-radius: 50px; 
+    display: inline-flex; align-items: center; font-weight: 600; overflow: hidden; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; transition: all 0.2s ease; 
+}
 .link-container a:hover { transform: translateY(-3px) scale(1.02); }
-.link-container a::before { counter-increment: link-counter; content: counter(link-counter); position: absolute; left: 0; top: 0; height: 100%; width: 38px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-/* Day Mode Pill */
+.link-container a::before { 
+    counter-increment: link-counter; content: counter(link-counter); 
+    position: absolute; left: 0; top: 0; height: 100%; width: 38px; 
+    display: flex; align-items: center; justify-content: center; font-weight: 700; 
+}
 body.day-mode .link-container a { background-color: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; }
 body.day-mode .link-container a:hover { background-color: #e0e7ff; box-shadow: 0 4px 12px rgba(67, 56, 202, 0.15); }
 body.day-mode .link-container a::before { background-color: #dbeafe; color: #1e40af; }
-/* Dark Mode Pill */
 body.dark-mode .link-container a { background-color: #312e81; color: #e0e7ff; border: 1px solid #4f46e5; }
 body.dark-mode .link-container a:hover { background-color: #4338ca; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2); }
 body.dark-mode .link-container a::before { background-color: #4338ca; color: #c7d2fe; }
 
+/* Footer & Social Links */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+}
+body.dark-mode footer { border-top: 1px solid #333; }
+footer p { margin: 0; margin-bottom: 15px; font-size: 0.9em; }
+.social-links { display: flex; justify-content: center; gap: 20px; }
+.social-links a {
+    color: #333; font-size: 1.5em; width: 45px; height: 45px; line-height: 45px;
+    border-radius: 50%; background-color: #f0f0f0;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+body.dark-mode .social-links a { color: #f1f1f1; background-color: #333; }
+.social-links a:hover { transform: translateY(-5px); }
+.social-links a[href*="facebook"]:hover { background-color: #1877F2; color: white; }
+.social-links a[href*="youtube"]:hover { background-color: #FF0000; color: white; }
+.social-links a[href*="telegram"]:hover { background-color: #0088cc; color: white; }
 
-/* --- 6. Quiz Component Styles --- */
+/* --- 5. Page-Specific Styles: Quiz, Revision, Notepad --- */
+
+/* Quiz Page */
 .quiz-page-container { padding: 20px; }
 .quiz-header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
 .score-board { display: flex; justify-content: center; gap: 20px; font-size: 1.2rem; font-weight: bold; margin-top: 10px; }
 #correct-count { color: #28a745; }
 #wrong-count { color: #dc3545; }
 #timer { color: #6c757d; }
-.option-btn { display: flex; align-items: center; width: 100%; padding: 15px; border-radius: 16px; border: 2px solid; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); transition: all 0.2s ease-in-out; font-weight: 500; font-size: 16px; cursor: pointer; text-align: left; }
+.option-btn { 
+    display: flex; align-items: center; width: 100%; padding: 15px; border-radius: 16px; border: 2px solid; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); transition: all 0.2s ease-in-out; 
+    font-weight: 500; font-size: 16px; cursor: pointer; text-align: left; 
+}
+.option-btn:disabled { cursor: not-allowed; }
 .option-btn .option-prefix { font-weight: 700; margin-right: 12px; }
+body.day-mode .option-btn { background-color: #f8fafc; border-color: #e2e8f0; color: #334155; }
+body.day-mode .option-btn:hover:not(:disabled) { border-color: #3b82f6; }
 body.day-mode .option-btn .option-prefix { color: #3b82f6; }
+body.dark-mode .option-btn { background-color: #374151; border-color: #4b5563; color: #f3f4f6; }
+body.dark-mode .option-btn:hover:not(:disabled) { border-color: #60a5fa; }
 body.dark-mode .option-btn .option-prefix { color: #60a5fa; }
 .option-btn.correct { background: #10b981 !important; color: white !important; border-color: #059669 !important; animation: pulse 0.6s ease; }
 .option-btn.incorrect { background: #ef4444 !important; color: white !important; border-color: #b91c1c !important; animation: shake 0.5s ease; }
-.action-btn { padding: 12px 24px; font-weight: 600; border-radius: 12px; border: none; color: white; cursor: pointer; background: linear-gradient(135deg, #2563eb, #3b82f6); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); transition: all 0.2s ease; text-decoration: none; }
+
+/* Action Buttons (for Quiz and Notepad) */
+.action-btn { 
+    padding: 12px 24px; font-weight: 600; border-radius: 12px; border: none; color: white; cursor: pointer; 
+    background: linear-gradient(135deg, #2563eb, #3b82f6); 
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); 
+    transition: all 0.2s ease; text-decoration: none; 
+}
 .action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3); }
 .action-btn.green { background: linear-gradient(135deg, #16a34a, #22c55e); box-shadow: 0 4px 15px rgba(22, 163, 74, 0.2); }
 .action-btn.gray { background: linear-gradient(135deg, #64748b, #94a3b8); }
+
+/* Review Card (Quiz) */
 .review-card { border-radius: 16px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); padding: 20px; margin-bottom: 20px; border-left: 6px solid; }
-.review-card.correct { border-color: #22c55e; }
-.review-card.incorrect { border-color: #ef4444; }
-.back-to-home { display: block; text-align: center; margin-top: 20px; color: #007BFF; text-decoration: none; font-weight: bold; }
+.review-card.review-correct { border-color: #22c55e; background-color: #f0fdf4; }
+.review-card.review-incorrect { border-color: #ef4444; background-color: #fef2f2; }
+body.dark-mode .review-card.review-correct { background-color: #1f392c; }
+body.dark-mode .review-card.review-incorrect { background-color: #451a1a; }
 
+/* Notepad Section */
+#notepad .notepad-container { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+#notepad .notepad-column { flex: 1; min-width: 250px; }
+#notepad h3 { font-size: 1.1em; margin-bottom: 10px; }
+#notepad textarea {
+    width: 100%; height: 150px; padding: 10px; border-radius: 8px;
+    border: 1px solid #ccc; font-family: 'Arial', sans-serif;
+    font-size: 1em; resize: vertical;
+}
+body.day-mode #notepad textarea { background-color: #f9f9f9; color: #333; }
+body.dark-mode #notepad textarea { background-color: #3a3a3a; color: #f1f1f1; border-color: #555; }
+#notepad .notepad-buttons { margin-top: 15px; display: flex; gap: 10px; }
+#notepad .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s; }
+#notepad .btn-primary { background-color: #007bff; color: white; }
+#notepad .btn-primary:hover { background-color: #0056b3; }
+#notepad .btn-secondary { background-color: #6c757d; color: white; }
+#notepad .btn-secondary:hover { background-color: #5a6268; }
 
-/* --- 7. Page Navigation Styles --- */
-#page-navigation { margin: 40px 0 20px 0; border-top: 1px solid #e2e8f0; padding-top: 20px; }
-body.dark-mode #page-navigation { border-top-color: #374151; }
-.nav-controls { display: flex; justify-content: space-between; align-items: center; }
-.nav-arrow { font-weight: 600; padding: 8px 16px; border-radius: 8px; text-decoration: none; transition: background-color 0.2s ease; }
-.nav-arrow.prev { background-color: #f1f5f9; color: #475569; }
-.nav-arrow.next { background-color: #3b82f6; color: white; }
-body.dark-mode .nav-arrow.prev { background-color: #374151; color: #cbd5e1; }
-body.dark-mode .nav-arrow.next { background-color: #60a5fa; color: #1f2937; }
-.nav-arrow.disabled { opacity: 0.5; cursor: not-allowed; }
-.page-numbers { display: flex; gap: 8px; }
-.page-num { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; text-decoration: none; font-weight: 600; color: #64748b; background-color: #f1f5f9; transition: all 0.2s ease; }
-.page-num.active { background-color: #3b82f6; color: white; transform: scale(1.1); }
-body.dark-mode .page-num { color: #d1d5db; background-color: #374151; }
-body.dark-mode .page-num.active { background-color: #60a5fa; color: #1f2937; }
+/* --- 6. Utility Styles: Preloader, Back-to-Top --- */
+#preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 9999; display: flex; justify-content: center; align-items: center;
+}
+body.day-mode #preloader { background-color: #f0f4f8; }
+body.dark-mode #preloader { background-color: #111827; }
 
+.loader {
+    border: 8px solid #e0e0e0; border-top: 8px solid #3498db;
+    border-radius: 50%; width: 60px; height: 60px;
+    animation: spin 1s linear infinite;
+}
+body.dark-mode .loader { border-color: #4b5563; border-top-color: #60a5fa; }
 
-/* --- 8. Animations & Media Queries --- */
+#back-to-top {
+    position: fixed; bottom: 20px; right: 20px;
+    background-color: #007bff; color: white;
+    width: 40px; height: 40px; border-radius: 50%;
+    text-align: center; line-height: 40px;
+    display: none; z-index: 1000; transition: opacity 0.3s;
+    text-decoration: none;
+}
+#back-to-top:hover { background-color: #0056b3; }
+
+/* --- 7. Animations --- */
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 @keyframes shake { 0%, 100% { transform: translateX(0); } 25%, 75% { transform: translateX(-4px); } 50% { transform: translateX(4px); } }
-@media (max-width: 600px) {
-    .main-header h1 { font-size: 2.2rem; }
-    .nav-grid { grid-template-columns: repeat(2, 1fr); }
-    .page-numbers { display: none; }
-}
-/* --- 12. Dropdown Menu for Flash Card Sets on Homepage --- */
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* ড্রপডাউনের মূল কন্টেইনার */
-.game-dropdown {
-    position: relative; /* ভেতরের মেনুকে পজিশন করার জন্য */
-    display: block;
-    width: 100%;
+
+/* --- 8. Media Queries for Responsive Design --- */
+
+/* For Tablets and larger phones (screen width <= 768px) */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .main-header h1 {
+        font-size: 2.2rem;
+    }
+    .nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .card {
+        padding: 20px;
+    }
+    #notepad .notepad-container {
+        flex-direction: column;
+        gap: 25px;
+    }
 }
 
-/* যে বাটনটি ক্লিক করলে ড্রপডাউন দেখাবে */
-.dropdown-toggle {
-    width: 100%;
+/* For smaller mobile devices (screen width <= 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+    .main-header p {
+        font-size: 1rem;
+    }
+    .nav-button span {
+        font-size: 0.9em;
+    }
+    .card h2 {
+        font-size: 1.5rem;
+    }
+    #notepad .notepad-buttons {
+        flex-direction: column;
+    }
+    #notepad .btn {
+        width: 100%;
+    }
+    .quiz-page-container {
+        padding: 10px;
+    }
+    .option-btn {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+/* --- 9. Advanced Leaderboard Styles --- */
+
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.leaderboard-item {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+body.dark-mode .leaderboard-item {
+    background-color: #374151;
+    border-color: #4b5563;
+}
+
+.leaderboard-item .main-score {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px;
-    border-radius: 20px;
-    color: white;
-    border: none;
     font-size: 1.2rem;
     font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 8px 25px -5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dropdown-toggle:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px -5px rgba(0,0,0,0.2);
-}
-
-/* ড্রপডাউন মেনুর কন্টেইনার */
-.dropdown-menu {
-    display: none; /* ডিফল্টভাবে লুকানো থাকবে */
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 10; /* অন্য সবকিছুর উপরে দেখানোর জন্য */
-    border-radius: 12px;
-    margin-top: 8px; /* বাটন থেকে একটু নিচে দেখানোর জন্য */
-    max-height: 250px; /* মেনু বেশি লম্বা হলে স্ক্রলবার আসবে */
-    overflow-y: auto;
-    border: 1px solid #ddd;
-}
-
-/* ড্রপডাউনের ভেতরের লিঙ্কগুলো */
-.dropdown-menu a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border-bottom: 1px solid #f1f1f1;
-    text-align: left;
-    transition: background-color 0.2s;
-}
-
-.dropdown-menu a:last-child {
-    border-bottom: none; /* শেষের আইটেমের নিচে বর্ডার থাকবে না */
-}
-
-/* হোভার করলে মেনুটি দেখানোর জন্য */
-.game-dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* হোভার করলে লিঙ্কের রঙ পরিবর্তন */
-.dropdown-menu a:hover {
-    background-color: #f1f5f9;
-}
-
-
-/* --- Dark Mode এর জন্য ড্রপডাউনের ডিজাইন --- */
-body.dark-mode .dropdown-menu {
-    background-color: #2d3748; /* গাঢ় ব্যাকগ্রাউন্ড */
-    border-color: #4a5568;
-}
-
-body.dark-mode .dropdown-menu a {
-    color: #e2e8f0; /* হালকা লেখা */
-    border-bottom-color: #4a5568;
-}
-
-body.dark-mode .dropdown-menu a:hover {
-    background-color: #4a5568;
-}
-/* --- 13. Revision Page Styles --- */
-.revision-page-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-}
-.revision-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-.revision-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-.revision-header p {
-    font-size: 1.2rem;
-    color: #64748b;
-}
-body.dark-mode .revision-header p {
-    color: #9ca3af;
-}
-
-.revision-card {
-    background-color: white;
-    border-radius: 16px;
-    padding: 25px;
-    margin-bottom: 25px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.revision-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-body.dark-mode .revision-card {
-    background-color: #1f2937;
-    border-color: #374151;
-}
-
-.revision-card h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.revision-card h3 i {
-    color: #3b82f6;
-}
-body.dark-mode .revision-card h3 i {
-    color: #60a5fa;
-}
-
-.answer-box {
-    background-color: #eef2ff;
-    border-left: 5px solid #4f46e5;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-.answer-box p, .answer-box ul {
-    margin: 0;
-    font-size: 1.1rem;
-}
-.answer-box ul {
-    list-style-type: disc;
+.leaderboard-item .details-list {
+    list-style-type: '✅  ';
     padding-left: 20px;
+    margin-top: 10px;
+    border-top: 1px dashed #d1d5db;
+    padding-top: 10px;
+    font-size: 0.9em;
+    color: #4b5563;
 }
-body.dark-mode .answer-box {
-    background-color: #312e81;
-    border-left-color: #a5b4fc;
-}
-
-.explanation-box {
-    padding: 10px;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #475569;
-}
-body.dark-mode .explanation-box {
-    color: #cbd5e1;
+body.dark-mode .leaderboard-item .details-list {
+    border-top-color: #4b5563;
+    color: #d1d5db;
 }
 
-.explanation-box p i, .answer-box p i {
-    margin-right: 8px;
+.leaderboard-item .details-list li {
+    padding: 3px 0;
 }
-/* Page Navigation Styles */
+/* ========================================= */
+/*      New Page Navigation Design with Better Hover Effects      */
+/* ========================================= */
+
+/* নেভিগেশন কন্টেইনার */
 .page-navigation {
     display: flex;
     justify-content: center;
-    gap: 1rem; /* বাটনগুলোর মধ্যে ফাঁকা জায়গা */
-    margin-top: 2rem;
-    padding: 1rem;
+    align-items: center;
+    gap: 15px; /* বাটনগুলোর মধ্যে ফাঁকা জায়গা */
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
 }
 
+body.dark-mode .page-navigation {
+    border-top-color: #374151;
+}
+
+/* সব বাটনের জন্য সাধারণ স্টাইল */
 .page-navigation .btn {
+    display: inline-flex; /* আইকন ও টেক্সটকে পাশাপাশি রাখার জন্য */
+    align-items: center;
+    gap: 8px; /* আইকন ও টেক্সটের মধ্যে ফাঁকা জায়গা */
     text-decoration: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
+    padding: 10px 22px; /* কম্প্যাক্ট সাইজ */
+    border-radius: 12px; /* হালকা গোলাকার */
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    position: relative; /* শ্যাডোর জন্য */
+    overflow: hidden; /* ভেতরের ইফেক্টের জন্য */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.page-navigation .btn i {
+    transition: transform 0.3s ease;
+}
+
+/* হোভার করলে আইকনের অ্যানিমেশন */
+.page-navigation .btn:hover:not(.disabled) i.fa-arrow-left {
+    transform: translateX(-4px);
+}
+.page-navigation .btn:hover:not(.disabled) i.fa-arrow-right {
+    transform: translateX(4px);
+}
+.page-navigation .btn:hover:not(.disabled) i.fa-home {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+
+/* হোম বাটন (Primary) */
 .page-navigation .btn-primary {
-    background-color: #007bff; /* হোম বাটনের রঙ */
+    background: #3b82f6;
+    color: white;
 }
-
-.page-navigation .btn-secondary {
-    background-color: #6c757d; /* পরবর্তী/পূর্ববর্তী বাটনের রঙ */
-}
-
-.page-navigation .btn:hover {
-    transform: translateY(-2px); /* হোভার করলে বাটন উপরে উঠবে */
-}
-
 .page-navigation .btn-primary:hover {
-    background-color: #0056b3;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+}
+body.dark-mode .page-navigation .btn-primary {
+    background: #60a5fa;
+    color: #111827;
+}
+body.dark-mode .page-navigation .btn-primary:hover {
+    box-shadow: 0 10px 25px -5px rgba(96, 165, 250, 0.3);
 }
 
-.page-navigation .btn-secondary:hover {
-    background-color: #5a6268;
+
+/* পূর্ববর্তী/পরবর্তী বাটন (Secondary) */
+.page-navigation .btn-secondary {
+    background: #fff;
+    color: #475569;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+.page-navigation .btn-secondary:hover:not(.disabled) {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .page-navigation .btn-secondary {
+    background: #374151;
+    color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+}
+body.dark-mode .page-navigation .btn-secondary:hover:not(.disabled) {
+    background-color: #4b5563;
 }
 
-/* নিষ্ক্রিয় বাটনের জন্য স্টাইল */
+
+/* নিষ্ক্রিয় বাটন (Disabled) */
 .page-navigation .btn.disabled {
-    background-color: #adb5bd;
+    background-color: #e2e8f0;
+    color: #94a3b8;
     cursor: not-allowed;
-    pointer-events: none; /* ক্লিক করা যাবে না */
+    box-shadow: none;
+    opacity: 0.7;
+}
+body.dark-mode .page-navigation .btn.disabled {
+    background-color: #4b5563;
+    color: #6b7280;
+}
+
+/* "হোমপেজে ফিরে যান" লিঙ্কের জন্য কোনো পরিবর্তন নেই, এটি আগের মতোই থাকবে */
+.back-to-home {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #64748b;
+    transition: color 0.2s;
+}
+.back-to-home:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+body.dark-mode .back-to-home {
+    color: #9ca3af;
+}
+body.dark-mode .back-to-home:hover {
+    color: #60a5fa;
+}
+/* রিভিউ কার্ডের স্টাইল */
+.review-card {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.review-correct {
+    background-color: #e8f5e9; /* হালকা সবুজ */
+    border-left: 5px solid #4caf50; /* গাঢ় সবুজ বর্ডার */
+}
+
+.review-incorrect {
+    background-color: #ffebee; /* হালকা লাল */
+    border-left: 5px solid #f44336; /* গাঢ় লাল বর্ডার */
+}
+
+/* লিডারবোর্ড স্টাইল */
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.leaderboard-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.leaderboard-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-item .main-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.leaderboard-item .details-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* সাধারণ বাটন স্টাইল */
+.action-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  color: white;
+  background-color: #3b82f6; /* নীল */
+}
+
+.action-btn:hover {
+    filter: brightness(1.1);
+}
+
+.action-btn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.action-btn.green {
+    background-color: #22c55e; /* সবুজ */
+}
+
+.action-btn.gray {
+    background-color: #6b7280; /* ধূসর */
 }
